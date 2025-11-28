@@ -3,6 +3,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
+import java.util.Scanner;
 
 public class Film {
     private int filmId;
@@ -14,11 +15,15 @@ public class Film {
     private String getCategorieSql = "Select categorie from film where id = ?";
     private String updateCategorie = "update film set categorie = ? where id = ?";
     private String updateTitre = "update film set categorie = ? where id = ?";
+    Scanner scanner = new Scanner(System.in);
 
-    public Film(Connection con , String duree , String titr, String categorie) throws SQLException {
-        this.titr = titr;
-        this.duree = duree;
-        this.categorie = categorie;
+    public Film(Connection con) throws SQLException {
+        System.out.print("Entrez le titre: ");
+        this.titr = scanner.nextLine();
+        System.out.print("Entrez la duree: ");
+        this.duree = scanner.nextLine();
+        System.out.print("Entrez le categorie: ");
+        this.categorie = scanner.nextLine();
         PreparedStatement ps = con.prepareStatement(sqlInsert);
         ps.setString(1,titr);
         ps.setString(2,duree);
@@ -35,8 +40,6 @@ public class Film {
             }
         }
        }
-
-
 
     public String getCategorie(Connection con) throws SQLException {
         PreparedStatement st = con.prepareStatement(getCategorieSql);
@@ -73,6 +76,9 @@ public class Film {
         this.filmId = filmId;
     }
 
+    public void getFilm(){
+        System.out.println("Film titre: " + this.titr + " - Film duree: " + this.duree + " - Film categorie: " + this.categorie);
+    }
     @Override
     public String toString() {
         return "Film{" +

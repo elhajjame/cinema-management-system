@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Scanner;
 
 public class Seance {
     private int seanceId;
@@ -11,12 +12,17 @@ public class Seance {
     private int idSpectateur;
     private String sqlInsert = "insert into seance (horair , salle , capaciteMaximale, filmId) values (? , ? , ? , ?);";
     private String getId = "select id from seance where horair = ? and salle = ? and capaciteMaximale = ?;";
+    Scanner scanner = new Scanner(System.in);
 
-    public Seance(Connection con, int max, String salle, String houre, int filmId) throws Exception {
-        this.max = max;
-        this.salle = salle;
-        this.houre = houre;
-        this.filmId = filmId;
+    public Seance(Connection con) throws Exception {
+        System.out.print("Entre le film id : ");
+        this.filmId = scanner.nextInt();
+        System.out.print("Entre la salle number : ");
+        this.salle = scanner.nextLine();
+        System.out.print("Entre le film id : ");
+        this.houre = scanner.nextLine();
+        System.out.print("Entre le film id : ");
+        this.max = scanner.nextInt();
 
         try (PreparedStatement ps = con.prepareStatement(sqlInsert)) {
             ps.setString(1,houre);
@@ -86,6 +92,10 @@ public class Seance {
 
     public void setIdSpectateur(int idSpectateur) {
         this.idSpectateur = idSpectateur;
+    }
+
+    public void getSeance (){
+        System.out.println("Film id : " + filmId + " - heaur: " + houre + " - maximum capacity: " + max);
     }
 
     @Override
