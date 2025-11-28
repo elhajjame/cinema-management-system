@@ -19,9 +19,10 @@ public class Seance {
         this.filmId = scanner.nextInt();
         System.out.print("Entre la salle number : ");
         this.salle = scanner.nextLine();
-        System.out.print("Entre le film id : ");
+        this.salle = scanner.nextLine();
+        System.out.print("Entre le minutage : ");
         this.houre = scanner.nextLine();
-        System.out.print("Entre le film id : ");
+        System.out.print("Entre le maximum capacity : ");
         this.max = scanner.nextInt();
 
         try (PreparedStatement ps = con.prepareStatement(sqlInsert)) {

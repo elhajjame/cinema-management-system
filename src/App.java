@@ -86,7 +86,11 @@ public class App {
             switch (choix) {
                 case 1:
                     System.out.println(">> Création d'un nouveau film...");
-                    films.add(new Film(con));
+                    try {
+                        films.add(new Film(con));
+                    }catch (Exception e){
+                        System.out.println("Somthing went wrong! ");
+                    }
                     break;
                 case 2:
                     System.out.println(">> Liste des films disponible :");
@@ -116,7 +120,11 @@ public class App {
             switch (choix) {
                 case 1:
                     System.out.println(">> Planification d'une séance...");
-                    seances.add(new Seance(con));
+                    try {
+                        seances.add(new Seance(con));
+                    }catch (Exception e){
+                        System.out.println("Somthing went wrong! ");
+                    }
                     break;
                 case 2:
                     System.out.println(">> Liste des séances...");
