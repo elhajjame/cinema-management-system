@@ -7,7 +7,7 @@ public class Ticket {
     static int count = 1;
     private double prix;
     private Seance seance;
-    private Spectator spectator;
+//    private Spectator spectator;
 
 
     public double getPrix() {
@@ -26,13 +26,13 @@ public class Ticket {
         this.seance = seance;
     }
 
-    public Spectator getSpectator() {
-        return spectator;
-    }
-
-    public void setSpectator(Spectator spectator) {
-        this.spectator = spectator;
-    }
+//    public Spectator getSpectator() {
+//        return spectator;
+//    }
+//
+//    public void setSpectator(Spectator spectator) {
+//        this.spectator = spectator;
+//    }
 
     public int getTicketId() {
         return ticketId;
@@ -50,7 +50,7 @@ public class Ticket {
         ps.setInt(1, ticketId);
         ps.setDouble(2, prix);
         ps.setInt(3, seance.getSeanceId());
-        ps.setInt(4, spectator.getSpectatorId());
+//        ps.setInt(4, spectator.getSpectatorId());
         ps.executeUpdate();
         ps.close();
     }
